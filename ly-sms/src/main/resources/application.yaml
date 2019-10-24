@@ -1,0 +1,18 @@
+server:
+  port: 8005
+spring:
+  application:
+    name: sms-service
+  rabbitmq:
+    host: 192.168.80.128
+    username: leyou
+    password: leyou
+    virtual-host: /leyou
+  redis:
+    host: 192.168.80.128
+ly:
+  sms:
+    accessKeyId: NGAU4pU+m/M+jTxMnaejfQ== # 你自己的accessKeyId
+    accessKeySecret: NaQxaHVwSobqXf3pQhQf5A== # 你自己的AccessKeySecret
+    signName: OldDriver2 # 签名名称
+    verifyCodeTemplate: SMS_175370223  # 模板名称

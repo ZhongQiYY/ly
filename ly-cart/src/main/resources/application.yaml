@@ -1,0 +1,20 @@
+server:
+  port: 8008
+spring:
+  application:
+    name: cart-service
+  redis:
+    host: 192.168.80.128
+  rabbitmq:
+    virtual-host: /leyou
+    username: leyou
+    password: leyou
+    host: 192.168.80.128
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+ly:
+  jwt:
+    pubKeyPath: D:\IdeaProject\leyou\ly-auth-center\ly-auth-common\bystander\rsa.pub # 公钥地址
+    cookieName: LY_TOKEN

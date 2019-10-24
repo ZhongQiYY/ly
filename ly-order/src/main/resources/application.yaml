@@ -1,0 +1,52 @@
+server:
+  port: 8009
+spring:
+  application:
+    name: order-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/leyou?serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+  jackson:
+    default-property-inclusion: non_null
+  rabbitmq:
+    host: 192.168.80.128
+    username: leyou
+    password: leyou
+    virtual-host: /leyou
+    template:
+      retry:
+        enabled: true
+        initial-interval: 10000ms
+        max-interval: 30000ms
+        multiplier: 2
+      exchange: ly.item.exchange
+      publisher-confirms: true
+  redis:
+    host: 192.168.80.128
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+    registry-fetch-interval-seconds: 5
+mybatis:
+  type-aliases-package: com.leyou.order.pojo
+ly:
+  jwt:
+    pubKeyPath: D:\IdeaProject\leyou\ly-auth-center\ly-auth-common\bystander\rsa.pub # 公钥地址
+    cookieName: LY_TOKEN
+  worker:
+    workerId: 1
+    dataCenterId: 1
+  pay:
+    appId: wx8397f8696b538317
+    mchId: 1473426802
+    key: T6m9iK73b0kn9g5v426MKfHQH7X8rKwb
+    connectTimeoutMs: 5000
+    readTimeoutMs: 10000
+    #由于没有外网ip，这里可以靠内网穿透，让微信能够访问这个服务，
+    #这里使用的是免费的NATAPP上的工具
+    #由于是免费的，每次启动 D:\NATAPP.cn内网穿透工具\  下的natapp.exe，得到的地址都不一样
+    #要时常更换
+    notifyUrl: http://jmhfeg.natappfree.cc/wxpay/notify  #支付成功后，微信需要调用这个链接，访问我的服务返回回调结果，我再处理这个结果
