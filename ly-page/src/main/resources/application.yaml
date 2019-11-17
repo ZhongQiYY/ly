@@ -4,7 +4,7 @@ spring:
   application:
     name: page-service
   thymeleaf:
-    cache: false
+    cache: false #关闭缓存
   rabbitmq:
     host: 192.168.80.128
     username: leyou
